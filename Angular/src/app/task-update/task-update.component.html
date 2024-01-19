@@ -1,0 +1,19 @@
+<div class="center-container">
+    <form [formGroup]="updateTaskForm" (ngSubmit)="updateTask()" class="task-form">
+        <h2>Update Task</h2>
+      <div>
+        <label>Title:</label>
+        <input type="text" formControlName="title" required>
+      </div>
+      <div>
+        <label>Description:</label>
+        <textarea formControlName="description" required></textarea>
+      </div>
+      <div>
+        <label>Is Completed:</label>
+        <input type="checkbox" formControlName="complete">
+      </div>
+      <button type="submit">Update Task</button>
+    </form>
+  </div>
+  

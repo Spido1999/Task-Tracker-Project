@@ -1,0 +1,42 @@
+<div class="container">
+    <h2>Register To Task Tracker </h2>
+    <form [formGroup]="registrationForm" (ngSubmit)="register(registrationForm)">
+  
+      <!-- Full Name field -->
+      <div class="form-group">
+        <label for="uName">Full Name</label>
+        <br /><br />
+        <input type="text" class="form-control" id="uName" formControlName="uName" placeholder="Enter your full name" required>
+        <span *ngIf="registrationForm.get('uName')?.invalid && (registrationForm.get('uName')?.dirty || registrationForm.get('uName')?.touched)" style="color:red;">This is a required field!!</span>
+      </div>
+  
+      <!-- Email field -->
+      <div class="form-group">
+        <label for="uEmail">Email</label>
+        <br /><br />
+        <input type="email" class="form-control" id="uEmail" formControlName="uEmail" placeholder="Enter your email" required>
+        <span *ngIf="registrationForm.get('uEmail')?.invalid && (registrationForm.get('uEmail')?.dirty || registrationForm.get('uEmail')?.touched)" style="color:red;">This is a required field!!</span>
+      </div>
+  
+      <!-- Password field -->
+      <div class="form-group">
+        <label for="uPass">Password</label>
+        <br /><br />
+        <input type="password" class="form-control" id="uPass" formControlName="uPass" placeholder="Enter your password" required pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" >
+        <!-- At least one digit (0-9)
+        At least one lowercase letter (a-z)
+        At least one uppercase letter (A-Z)
+        Minimum length of 8 characters -->
+        <span *ngIf="registrationForm.get('uPass')?.invalid && (registrationForm.get('uPass')?.dirty || registrationForm.get('uPass')?.touched)" style="color:red;">This is a required field!! <br> At least one digit (0-9)
+          At least one lowercase letter (a-z)
+          At least one uppercase letter (A-Z)
+          Minimum length of 8 characters</span>
+        </div>
+  
+      <div class="register-button">
+        <button type="submit" class="btn btn-primary" [disabled]="registrationForm.invalid" >Register</button>
+      </div>
+    </form>
+  </div>
+  <br>
+  

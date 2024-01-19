@@ -1,0 +1,39 @@
+<div class="container">
+    <h2 class="header">Login To Preetham Motors</h2><br>
+    <form [formGroup]="loginForm" (ngSubmit)="login()">
+      <div class="form-group">
+        <label for="uEmail">Email:</label> <br> <br>
+        <input matInput type="email" formControlName="uEmail" required pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+        <span *ngIf="loginForm.controls['uEmail'].invalid && (loginForm.controls['uEmail'].dirty || loginForm.controls['uEmail'].touched)" style="color: red;">Email is Mandatory!!</span><br>
+      </div>
+      <div class="form-group password-container">
+        <label for="uPass">Password:</label> <br> <br>
+        <input matInput type="{{ showPassword ? 'text' : 'password' }}" id="uPass" formControlName="uPass"
+          pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+          title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
+          required [ngClass]="{ 'password-input-small': showPassword }">
+        <div class="show-password-checkbox" (click)="togglePasswordVisibility()">
+          <input type="checkbox" [checked]="showPassword" />
+          <span class="show-password-label">&nbsp;Show Password</span>
+        </div>
+        <span class="password-error" *ngIf="loginForm.controls['uPass'].invalid && (loginForm.controls['uPass'].dirty || loginForm.controls['uPass'].touched)" style="color: red;">Password is Mandatory!! <br> At least one digit (0-9)
+          At least one lowercase letter (a-z)
+          At least one uppercase letter (A-Z)
+          Minimum length of 8 characters</span>
+      </div>
+      <br>
+      <div class="login-button">
+        <button type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+      </div>
+      <div *ngIf="isAuthenticated" class="alert alert-success mt-3">
+        Login completed
+      </div>
+      <div class="error-message">{{ errorMessage }}</div>
+      <br>
+    </form>
+    <div class="center-text">
+      <p>Dont have an account? <a routerLink="/register">Register Here</a></p>
+    </div>
+  </div>
+  <br><br>
+  

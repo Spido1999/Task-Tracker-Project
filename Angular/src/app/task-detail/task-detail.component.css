@@ -1,0 +1,25 @@
+.task-detail {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  h3 {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  
+  p {
+    margin-bottom: 10px;
+  }
+  
+  .task-status {
+    font-weight: bold;
+    color: green; /* or any other color for completed tasks */
+  }
+  
